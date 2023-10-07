@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Nuevo Vehiculo</title>
+</head>
+<body>
+<h1>Crear Nuevo Vehiculo</h1>
+
+<form method="post" th:action="@{/vehiculo/crear}">
+    <label for="patente">Patente:</label>
+    <input type="text" id="patente" name="patente" th:field="*{vehiculo.patente}" required><br>
+
+    <label for="marca">Marca:</label>
+    <select id="marca" name="marca.id">
+        <option value="">Seleccione una marca</option>
+        <th:block th:each="marca : ${marcas}">
+            <option th:value="${marca.id}" th:text="${marca.nombre}"></option>
+        </th:block>
+    </select><br>
+
+    <label for="modelo">Modelo:</label>
+    <select id="modelo" name="modelo.id">
+        <option value="">Seleccione un modelo</option>
+        <th:block th:each="modelo : ${modelos}">
+            <option th:value="${modelo.id}" th:text="${modelo.nombre}"></option>
+        </th:block>
+    </select><br>
+
+    <label for="tecnico">Tecnico:</label>
+    <select id="tecnico" name="tecnico.id">
+        <option value="">Seleccione un tecnico</option>
+        <th:block th:each="tecnico : ${tecnicos}">
+            <option th:value="${tecnico.id}" th:text="${tecnico.dni}"></option>
+        </th:block>
+    </select><br>
+
+    <button type="submit">Crear Vehiculo</button>
+</form>
+
+<!-- Enlace para volver a la lista de marcas -->
+<a th:href="@{/cliente/lista}">Volver a la Lista de Vehiculos</a>
+</body>
+</html>

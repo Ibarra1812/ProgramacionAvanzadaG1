@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Tecnico</title>
+</head>
+<body>
+<h1>Editar Tecnico</h1>
+
+<form th:action="@{'/tecnico/guardar/' + ${tecnico.id}}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" th:value="${tecnico.nombre}"><br>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" th:value="${tecnico.apellido}"><br>
+
+    <label for="dni">DNI:</label>
+    <input type="text" id="dni" name="dni" th:value="${tecnico.dni}"><br>
+
+    <input type="hidden" name="_method" value="PUT">
+    <button type="submit">Guardar Cambios</button>
+</form>
+</body>
+</html>

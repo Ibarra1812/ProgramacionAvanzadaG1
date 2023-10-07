@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Nuevo Tecnico</title>
+</head>
+<body>
+<h1>Crear Nuevo Tecnico</h1>
+
+<form method="post" th:action="@{/tecnico/crear}">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" th:field="*{tecnico.nombre}" required><br>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" th:field="*{tecnico.apellido}"><br>
+
+    <label for="dni">DNI:</label>
+    <input type="text" id="dni" name="dni" th:field="*{tecnico.dni}" required><br>
+
+    <button type="submit">Crear Tecnico</button>
+</form>
+
+<!-- Enlace para volver a la lista de marcas -->
+<a th:href="@{/tecnico/lista}">Volver a la Lista de Tecnicos</a>
+</body>
+</html>

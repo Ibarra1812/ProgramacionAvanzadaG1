@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ABM de Marcas</title>
+</head>
+<body>
+<h1>ABM de Marcas</h1>
+
+<!-- Botón para crear una nueva marca -->
+<a href="/marca/crear" class="btn btn-primary">Crear Nueva Marca</a>
+
+<h2>Lista de Marcas</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterar sobre la lista de marcas y mostrar cada una -->
+    <tr th:each="marca : ${marcas}">
+        <td th:text="${marca.id}"></td>
+        <td th:text="${marca.nombre}"></td>
+        <td th:text="${marca.descripcion}"></td>
+        <td>
+            <!-- Enlaces para editar y eliminar cada marca -->
+            <form th:action="@{'/marca/editar/' + ${marca.id}}">
+                <button type="submit">Editar</button>
+            </form>
+            <form th:action="@{'/marca/eliminar/' + ${marca.id}}" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

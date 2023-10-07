@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Nuevo Cliente</title>
+</head>
+<body>
+<h1>Crear Nuevo Cliente</h1>
+
+<form method="post" th:action="@{/cliente/crear}">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" th:field="*{cliente.nombre}" required><br>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" th:field="*{cliente.apellido}"><br>
+
+    <label for="dni">DNI:</label>
+    <input type="text" id="dni" name="dni" th:field="*{cliente.dni}" required><br>
+
+    <label for="vehiculo">Vehículo:</label>
+    <select id="vehiculo" name="vehiculo.id">
+        <option value="">Seleccione un vehículo</option>
+        <th:block th:each="vehiculo : ${vehiculos}">
+            <option th:value="${vehiculo.id}" th:text="${vehiculo.patente}"></option>
+        </th:block>
+    </select><br>
+
+    <label for="direccion">Direccion:</label>
+    <input type="text" id="direccion" name="direccion" th:value="${cliente.direccion}"><br>
+
+    <label for="telefono">Telefono:</label>
+    <input type="text" id="telefono" name="telefono" th:value="${cliente.telefono}"><br>
+
+    <button type="submit">Crear Cliente</button>
+</form>
+
+<!-- Enlace para volver a la lista de marcas -->
+<a th:href="@{/cliente/lista}">Volver a la Lista de Clientes</a>
+</body>
+</html>

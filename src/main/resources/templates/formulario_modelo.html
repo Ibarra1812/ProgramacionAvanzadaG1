@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Nueva Modelo</title>
+</head>
+<body>
+<h1>Crear Nueva Modelo</h1>
+
+<form method="post" th:action="@{/modelo/crear}">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" th:field="*{modelo.nombre}" required><br>
+
+    <label for="ano">Año:</label>
+    <input type="text" id="ano" name="ano" th:field="*{modelo.ano}"><br>
+
+    <button type="submit">Crear Modelo</button>
+</form>
+
+<!-- Enlace para volver a la lista de marcas -->
+<a th:href="@{/modelo/lista}">Volver a la Lista de Modelos</a>
+</body>
+</html>

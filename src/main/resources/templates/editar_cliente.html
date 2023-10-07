@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Cliente</title>
+</head>
+<body>
+<h1>Editar Cliente</h1>
+
+<form th:action="@{'/cliente/guardar/' + ${cliente.id}}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" th:value="${cliente.nombre}"><br>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" th:value="${cliente.apellido}"><br>
+
+    <label for="dni">DNI:</label>
+    <input type="text" id="dni" name="dni" th:value="${cliente.dni}"><br>
+
+    <label for="vehiculo">Vehículo:</label>
+    <select id="vehiculo" name="vehiculo.id">
+        <option value="">Seleccione un vehículo</option>
+        <th:block th:each="vehiculo : ${vehiculos}">
+            <option th:value="${vehiculo.id}" th:text="${vehiculo.patente}"></option>
+        </th:block>
+    </select><br>
+
+    <label for="direccion">Direccion:</label>
+    <input type="text" id="direccion" name="direccion" th:value="${cliente.direccion}"><br>
+
+    <label for="telefono">Telefono:</label>
+    <input type="text" id="telefono" name="telefono" th:value="${cliente.telefono}"><br>
+
+    <input type="hidden" name="_method" value="PUT">
+    <button type="submit">Guardar Cambios</button>
+</form>
+</body>
+</html>

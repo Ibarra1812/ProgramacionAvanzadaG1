@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Vehiculo</title>
+</head>
+<body>
+<h1>Editar Vehiculo</h1>
+
+<form th:action="@{'/vehiculo/guardar/' + ${vehiculo.id}}" method="post">
+    <input type="hidden" name="_method" value="PUT">
+    <label for="patente">Patente:</label>
+    <input type="text" id="patente" name="patente" th:value="${vehiculo.patente}"><br>
+
+    <label for="marca">Marca:</label>
+    <select id="marca" name="marca.id">
+        <option value="">Seleccione una marca</option>
+        <th:block th:each="marca : ${marcas}">
+            <option th:value="${marca.id}" th:text="${marca.nombre}"></option>
+        </th:block>
+    </select><br>
+
+    <label for="modelo">Modelo:</label>
+    <select id="modelo" name="modelo.id">
+        <option value="">Seleccione un modelo</option>
+        <th:block th:each="modelo : ${modelos}">
+            <option th:value="${modelo.id}" th:text="${modelo.nombre}"></option>
+        </th:block>
+    </select><br>
+
+    <label for="tecnico">Tecnico:</label>
+    <select id="tecnico" name="tecnico.id">
+        <option value="">Seleccione un tecnico</option>
+        <th:block th:each="tecnico : ${tecnicos}">
+            <option th:value="${tecnico.id}" th:text="${tecnico.dni}"></option>
+        </th:block>
+    </select><br>
+
+    <input type="hidden" name="_method" value="PUT">
+    <button type="submit">Guardar Cambios</button>
+</form>
+</body>
+</html>
